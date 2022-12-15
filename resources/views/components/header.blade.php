@@ -7,23 +7,28 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
+                    @auth()
+                        @if(\Illuminate\Support\Facades\Auth::user()->role == 'user')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('acc')}}">Мои заказы</a>
+                                <a class="nav-link" href="{{route('acc')}}">Мой аккаунт</a>
+                            </li>
+                        @elseif(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Управление сайтом
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{route('admin.product.create')}}">Добавление товара</a></li>
+                                    <li><a class="dropdown-item" href="{{route('admin.product.index')}}">Все товары товара</a></li>
+                                    <li><a class="dropdown-item" href="#">Просмотр заказов</a></li>
+                                    <li><a class="dropdown-item" href="#">Пользователи</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{{route('admin')}}">Панель администратора</a></li>
+                                </ul>
+                            </li>
+                        @endif
+                    @endauth
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0 gap-2">
                     @guest()

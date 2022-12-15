@@ -12,14 +12,14 @@
                 @if(session()->has('errorAuth'))
                     <div class="alert alert-danger">{{session()->get('errorAuth')}}</div>
                 @endif
-                    @if(session()->has('successReg'))
-                        <div class="alert alert-success">{{session()->get('successReg')}}</div>
-                    @endif
+                @if(session()->has('successReg'))
+                    <div class="alert alert-success">{{session()->get('successReg')}}</div>
+                @endif
                 <h2 class="text-center">Страница авторизации</h2>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Почта</label>
-                    <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="email">
-                    @error('email')
+                    <label for="login" class="form-label">Логин</label>
+                    <input name="login" type="text" class="form-control @error('login') is-invalid @enderror" id="login">
+                    @error('login')
                         <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>

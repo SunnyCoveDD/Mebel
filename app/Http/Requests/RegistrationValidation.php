@@ -26,7 +26,9 @@ class RegistrationValidation extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'login' => 'required|unique:users',
+            'email' => 'required|email',
+            'address' => 'required',
             'password' => array('required',\Illuminate\Validation\Rules\Password::min(6)->mixedCase()),
             'password_confirmation' => 'required|same:password',
             'check' => 'required',
@@ -37,8 +39,10 @@ class RegistrationValidation extends FormRequest
     {
         return [
             'name.required' => 'Имя должно быть заполнено',
+            'login.required' => 'Логин должен быть заполнен',
+            'login.unique' => 'Этот логин уже используется',
+            'email.email' => 'Пожалуйстав, введите верный формат почты. Пример: user@mail.ru',
             'email.required' => 'Почта должна быть заполнена',
-            'email.unique' => 'Эта почта уже используется',
             'password.min' => [
                 'string' => 'Пароль должен состоять минимум из 6 символов',
             ],

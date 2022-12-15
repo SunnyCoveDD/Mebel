@@ -34,7 +34,8 @@ class UserController extends Controller
     {
         if(Auth::attempt($request->validated())){
             $request->session()->regenerate();
-            return redirect()->route('/');
+            if(Auth::user()->role == 'admin') return redirect()->route('/');
+            return redirect()->route('acc');
         }
         return back()->with(['errorAuth' => 'Неверный логин или пароль']);
     }

@@ -24,7 +24,7 @@ class AuthorizationValidation extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required',
+            'login' => 'required',
             'password' => 'required',
         ];
     }
@@ -32,7 +32,7 @@ class AuthorizationValidation extends FormRequest
     public function messages()
     {
         return [
-          'email.required' => 'Поле почты обязательно для заполения',
+          'login.required' => 'Поле логина обязательно для заполения',
           'password.required' => 'Поле пароля обязательно для заполения',
         ];
     }

@@ -18,9 +18,23 @@
                     @enderror
                 </div>
                 <div class="mb-3">
+                    <label for="login" class="form-label">Логин</label>
+                    <input name="login" type="text" class="form-control @error('login') is-invalid @enderror" value="{{old('login')}}" id="login">
+                    @error('login')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
                     <label for="email" class="form-label">Почта</label>
                     <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}" id="email">
                     @error('email')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Адрес</label>
+                    <input name="address" type="text" class="form-control @error('address') is-invalid @enderror" value="{{old('address')}}" id="address">
+                    @error('address')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
